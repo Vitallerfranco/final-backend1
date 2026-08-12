@@ -1,0 +1,20 @@
+<div class="card producto">
+
+  <h3>{{title}}</h3>
+
+  <p>
+    <span class="badge">{{category}}</span>
+    <strong>${{price}}</strong>
+  </p>
+
+  <p>Stock: {{stock}}</p>
+
+  <a class="btn btn-primary" href="/products/{{_id}}">
+    Ver detalle
+  </a>
+
+  <button class="btn btn-success agregar" data-id="{{_id}}">
+    Agregar al carrito
+  </button>
+
+</div>

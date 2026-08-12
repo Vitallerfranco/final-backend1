@@ -1,0 +1,60 @@
+<h2>Productos en tiempo real</h2>
+
+<p>Esta vista se actualiza sola con WebSockets cuando se agrega o se elimina un producto.</p>
+
+<!-- ===================== -->
+<!-- CREAR -->
+<!-- ===================== -->
+
+<div class="card">
+
+  <h3>Nuevo producto</h3>
+
+  <form class="form" id="formProducto">
+
+    <input name="title" placeholder="Título" required>
+    <input name="description" placeholder="Descripción" required>
+    <input name="code" placeholder="Código" required>
+    <input name="price" placeholder="Precio" type="number" required>
+    <input name="stock" placeholder="Stock" type="number" required>
+    <input name="category" placeholder="Categoría" required>
+
+    <button class="btn btn-primary">
+      Crear producto
+    </button>
+
+  </form>
+
+</div>
+
+<div id="mensaje" class="error" style="display:none;"></div>
+
+<!-- ===================== -->
+<!-- LISTADO -->
+<!-- ===================== -->
+
+<div class="lista-productos" id="listaProductos">
+
+  {{#each productos}}
+
+    <div class="card producto">
+
+      <h3>{{title}}</h3>
+
+      <p>
+        <span class="badge">{{category}}</span>
+        <strong>${{price}}</strong>
+      </p>
+
+      <button class="btn btn-danger borrarSocket" data-id="{{_id}}">
+        Eliminar
+      </button>
+
+    </div>
+
+  {{/each}}
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/tiempoReal.js"></script>

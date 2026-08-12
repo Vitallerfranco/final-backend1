@@ -1,0 +1,28 @@
+<a href="/products">← Volver al catálogo</a>
+
+<div class="card">
+
+  <h2>{{producto.title}}</h2>
+
+  <p>
+    <span class="badge">{{producto.category}}</span>
+    <strong>${{producto.price}}</strong>
+  </p>
+
+  <p>{{producto.description}}</p>
+
+  <p>Código: {{producto.code}}</p>
+
+  <p>Stock: {{producto.stock}}</p>
+
+  {{#if producto.status}}
+    <p class="disponible">Disponible</p>
+  {{else}}
+    <p class="no-disponible">No disponible</p>
+  {{/if}}
+
+  <button class="btn btn-success agregar" data-id="{{producto._id}}">
+    Agregar al carrito
+  </button>
+
+</div>

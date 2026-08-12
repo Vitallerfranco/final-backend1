@@ -1,0 +1,82 @@
+<h2>Catálogo</h2>
+
+<!-- ===================== -->
+<!-- FILTROS -->
+<!-- ===================== -->
+
+<div class="card">
+
+  <form class="filters" action="/products" method="GET">
+
+    <select name="query">
+
+      <option value="">Todas las categorías</option>
+
+      <option value="remeras" {{#ifEquals queryActual "remeras"}}selected{{/ifEquals}}>Remeras</option>
+      <option value="pantalones" {{#ifEquals queryActual "pantalones"}}selected{{/ifEquals}}>Pantalones</option>
+      <option value="camperas" {{#ifEquals queryActual "camperas"}}selected{{/ifEquals}}>Camperas</option>
+      <option value="calzado" {{#ifEquals queryActual "calzado"}}selected{{/ifEquals}}>Calzado</option>
+      <option value="accesorios" {{#ifEquals queryActual "accesorios"}}selected{{/ifEquals}}>Accesorios</option>
+      <option value="available:true" {{#ifEquals queryActual "available:true"}}selected{{/ifEquals}}>Solo disponibles</option>
+
+    </select>
+
+    <select name="sort">
+
+      <option value="">Sin orden</option>
+      <option value="asc" {{#ifEquals sortActual "asc"}}selected{{/ifEquals}}>Precio: menor a mayor</option>
+      <option value="desc" {{#ifEquals sortActual "desc"}}selected{{/ifEquals}}>Precio: mayor a menor</option>
+
+    </select>
+
+    <input
+      type="number"
+      name="limit"
+      placeholder="Productos por página"
+      min="1"
+      value="{{limitActual}}"
+    >
+
+    <button class="btn btn-success">
+      Filtrar
+    </button>
+
+  </form>
+
+</div>
+
+<!-- ===================== -->
+<!-- LISTADO -->
+<!-- ===================== -->
+
+<div class="lista-productos">
+
+  {{#each productos}}
+
+    {{> productCard}}
+
+  {{else}}
+
+    <p>No hay productos para mostrar.</p>
+
+  {{/each}}
+
+</div>
+
+<!-- ===================== -->
+<!-- PAGINACION -->
+<!-- ===================== -->
+
+<div class="paginacion">
+
+  {{#if hasPrevPage}}
+    <a class="btn btn-success" href="{{prevLink}}">← Anterior</a>
+  {{/if}}
+
+  <span>Página {{page}} de {{totalPages}}</span>
+
+  {{#if hasNextPage}}
+    <a class="btn btn-success" href="{{nextLink}}">Siguiente →</a>
+  {{/if}}
+
+</div>

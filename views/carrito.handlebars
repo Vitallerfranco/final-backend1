@@ -1,0 +1,61 @@
+<h2>Mi carrito</h2>
+
+<p class="id-carrito">ID del carrito: {{cartId}}</p>
+
+{{#if vacio}}
+
+  <div class="card">
+    <p>El carrito está vacío.</p>
+    <a class="btn btn-primary" href="/products">Ir al catálogo</a>
+  </div>
+
+{{else}}
+
+  <div class="card">
+
+    <table class="tabla">
+
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {{#each productos}}
+
+          <tr>
+            <td>{{this.product.title}}</td>
+            <td>${{this.product.price}}</td>
+            <td>{{this.quantity}}</td>
+            <td>${{multiplicar this.product.price this.quantity}}</td>
+            <td>
+              <button
+                class="btn btn-danger borrar"
+                data-cart="{{../cartId}}"
+                data-id="{{this.product._id}}">
+                Quitar
+              </button>
+            </td>
+          </tr>
+
+        {{/each}}
+
+      </tbody>
+
+    </table>
+
+    <h3>Total: ${{total}}</h3>
+
+    <button class="btn btn-danger vaciar" data-cart="{{cartId}}">
+      Vaciar carrito
+    </button>
+
+  </div>
+
+{{/if}}
