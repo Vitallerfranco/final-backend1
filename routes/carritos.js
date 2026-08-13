@@ -58,7 +58,8 @@ router.get("/:cid", async (req, res, next) => {
 // ==========================
 // AGREGAR PRODUCTO AL CARRITO
 // ==========================
-router.post("/:cid/products/:pid", async (req, res, next) => {
+// acepta /products/ y /product/ para no depender de como escriban la url
+router.post(["/:cid/products/:pid", "/:cid/product/:pid"], async (req, res, next) => {
 
   try {
 
@@ -99,7 +100,7 @@ router.post("/:cid/products/:pid", async (req, res, next) => {
 // ==========================
 // ELIMINAR UN PRODUCTO DEL CARRITO
 // ==========================
-router.delete("/:cid/products/:pid", async (req, res, next) => {
+router.delete(["/:cid/products/:pid", "/:cid/product/:pid"], async (req, res, next) => {
 
   try {
 
@@ -179,7 +180,7 @@ router.put("/:cid", async (req, res, next) => {
 // ==========================
 // ACTUALIZAR SOLO LA CANTIDAD
 // ==========================
-router.put("/:cid/products/:pid", async (req, res, next) => {
+router.put(["/:cid/products/:pid", "/:cid/product/:pid"], async (req, res, next) => {
 
   try {
 
